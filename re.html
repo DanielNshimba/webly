@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurum — An Elegant Dining Experience</title>
+    <meta name="description"
+        content="Aurum Restaurant — Discover timeless cuisine crafted with the finest seasonal ingredients. Reserve your table today." />
+    <link rel="stylesheet" href="re.css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- ====================================================
+    NAVIGATION
+  ==================================================== -->
+    <nav class="nav" id="navbar">
+        <a href="#" class="nav-logo">Aurum</a>
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#reservation">Reserve</a></li>
+            <li><a href="#reservation" class="nav-reserve-btn">Book a Table</a></li>
+        </ul>
+        <button class="nav-burger" id="navBurger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#menu" class="mobile-link">Menu</a>
+        <a href="#about" class="mobile-link">Our Story</a>
+        <a href="#reservation" class="mobile-link">Reserve a Table</a>
+    </nav>
+
+
+    <!-- ====================================================
+    HERO SECTION — IMAGE SLIDER
+  ==================================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-track" id="heroTrack">
+            <!-- Slide 1 -->
+            <div class="hero-slide"></div>
+            <!-- Slide 2 -->
+            <div class="hero-slide"></div>
+            <!-- Slide 3 -->
+            <div class="hero-slide"></div>
+        </div>
+
+        <!-- Static overlay content -->
+        <div class="hero-content">
+            <p class="hero-eyebrow">Est. 2008 · Fine Dining</p>
+            <h1 class="hero-title">
+                Where Every <em>Dish</em><br>Tells a Story
+            </h1>
+            <p class="hero-subtitle">
+                A sanctuary of refined taste — where heritage ingredients meet artisanal craft and every evening becomes
+                a memory.
+            </p>
+            <div class="hero-cta">
+                <a href="#reservation" class="btn-primary">
+                    <i class="fa-regular fa-calendar"></i> Reserve a Table
+                </a>
+                <a href="#menu" class="btn-outline">
+                    <i class="fa-solid fa-utensils"></i> View Menu
+                </a>
+            </div>
+        </div>
+
+        <!-- Dots -->
+        <div class="hero-dots" id="heroDots">
+            <div class="hero-dot active" data-index="0"></div>
+            <div class="hero-dot" data-index="1"></div>
+            <div class="hero-dot" data-index="2"></div>
+        </div>
+
+        <!-- Arrows -->
+        <div class="hero-arrows">
+            <button class="hero-arrow" id="heroPrev" aria-label="Previous slide">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="hero-arrow" id="heroNext" aria-label="Next slide">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Counter -->
+        <div class="hero-counter">
+            <span id="heroCurrentNum">01</span>
+            &nbsp;/&nbsp;
+            03
+        </div>
+    </section>
+
+
+    <!-- ====================================================
+    MENU SECTION
+  ==================================================== -->
+    <section class="menu-section" id="menu">
+        <div class="menu-header reveal">
+            <p class="section-tag">Curated Selections</p>
+            <h2 class="section-title">Our Signature Menu</h2>
+            <div class="divider">
+                <span></span>
+                <i class="fa-solid fa-leaf"></i>
+                <span></span>
+            </div>
+            <p class="section-desc">
+                Every plate is a canvas — composed with seasonal produce, rare spices, and generations of culinary
+                tradition.
+            </p>
+        </div>
+
+        <div class="menu-tabs" role="tablist">
+            <button class="menu-tab active" data-category="all">All</button>
+            <button class="menu-tab" data-category="starters">Starters</button>
+            <button class="menu-tab" data-category="mains">Mains</button>
+            <button class="menu-tab" data-category="desserts">Desserts</button>
+            <button class="menu-tab" data-category="drinks">Drinks</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+
+            <!-- Card 1 -->
+            <article class="menu-card reveal" data-category="starters">
+                <div class="menu-card-img-wrap">
+                    <img class="menu-card-img"
+                        src="https://images.unsplash.com/photo-1551248429-40975aa4de74?w=600&auto=format&fit=crop&q=75"
+                        alt="Truffle Arancini" loading="lazy" />
+                </div>
+                <div class="menu-card-body">
+                    <p class="menu-card-tag">Starter</p>
+                    <h3 class="menu-card-name">Truffle Arancini</h3>
+                    <p class="menu-card-desc">Golden risotto balls filled with black truffle, fontina and fresh herbs,
+                        served with saffron aioli.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$18</span>
+                        <span class="menu-card-badge">Chef's Pick</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="menu-card reveal" data-category="mains">
+                <div class="menu-card-img-wrap">
+                    <img class="menu-card-img"
+                        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=75"
+                        alt="Pan-seared Sea Bass" loading="lazy" />
+                </div>
+                <div class="menu-card-body">
+                    <p class="menu-card-tag">Main Course</p>
+                    <h3 class="menu-card-name">Pan-Seared Sea Bass</h3>
+                    <p class="menu-card-desc">Crispy-skin sea bass on a bed of cauliflower purée with capers, brown
+                        butter and micro greens.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$46</span>
+                        <span class="menu-card-badge">Signature</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="menu-card reveal" data-category="mains">
+                <div class="menu-card-img-wrap">
+                    <img class="menu-card-img"
+                        src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&auto=format&fit=crop&q=75"
+                        alt="Wagyu Tenderloin" loading="lazy" />
+                </div>
+                <div class="menu-card-body">
+                    <p class="menu-card-tag">Main Course</p>
+                    <h3 class="menu-card-name">Wagyu Tenderloin</h3>
+                    <p class="menu-card-desc">A5 Wagyu tenderloin, aged 45 days, with bone-marrow jus, roasted shallots
+                        and heirloom potato.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$95</span>
+                        <span class="menu-card-badge">Premium</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="menu-card reveal" data-category="starters">
+                <div class="menu-card-img-wrap">
+                    <img class="menu-card-img"
+                        src="https://images.unsplash.com/photo-1606787365047-cbdcfcc20a8a?w=600&auto=format&fit=crop&q=75"
+                        alt="Burrata & Heirloom Tomato" loading="lazy" />
+                </div>
+                <div class="menu-card-body">
+                    <p class="menu-card-tag">Starter</p>
+                    <h3 class="menu-card-name">Burrata & Heirloom Tomato</h3>
+                    <p class="menu-card-desc">Hand-pulled burrata with heritage tomatoes, aged balsamic, Sicilian basil
+                        oil and sea salt flakes.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$22</span>
+                        <span class="menu-card-badge">Seasonal</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="menu-card reveal" data-category="desserts">
+                <div class="menu-card-img-wrap">
+                    <img class="menu-card-img"
+                        src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=75"
+                        alt="Dark Chocolate Fondant" loading="lazy" />
+                </div>
+                <div class="menu-card-body">
+                    <p class="menu-card-tag">Dessert</p>
+                    <h3 class="menu-card-name">Dark Chocolate Fondant</h3>
+                    <p class="menu-card-desc">Warm 72% cacao fondant with a molten salted caramel core, vanilla bean ice
+                        cream and praline.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$16</span>
+                        <span class="menu-card-badge">Crowd Favourite</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="menu-card reveal" data-category="drinks">
+                <div class="menu-card-img-wrap">
+                    <img class="menu-card-img"
+                        src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600&auto=format&fit=crop&q=75"
+                        alt="Heritage Old Fashioned" loading="lazy" />
+                </div>
+                <div class="menu-card-body">
+                    <p class="menu-card-tag">Craft Cocktail</p>
+                    <h3 class="menu-card-name">Heritage Old Fashioned</h3>
+                    <p class="menu-card-desc">18-year Bourbon, house-smoked orange bitters, demerara, and a single
+                        hand-carved ice sphere.</p>
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">$24</span>
+                        <span class="menu-card-badge">Bartender's Pick</span>
+                    </div>
+                </div>
+            </article>
+
+        </div><!-- /menu-grid -->
+    </section>
+
+
+    <!-- ====================================================
+    ABOUT SECTION
+  ==================================================== -->
+    <section class="about-section" id="about">
+        <div class="about-img-wrap reveal">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&auto=format&fit=crop&q=80"
+                alt="Inside Aurum restaurant dining room" />
+            <div class="about-badge">
+                <div class="about-badge-icon">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="about-badge-text">
+                    <div class="about-badge-num">12+</div>
+                    <div class="about-badge-sub">Years of Excellence</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-text reveal">
+            <p class="section-tag">Our Story</p>
+            <h2 class="section-title">A Passion for <br>Timeless Craft</h2>
+            <div class="divider">
+                <span></span>
+                <i class="fa-solid fa-leaf"></i>
+                <span></span>
+            </div>
+            <p class="section-desc">
+                Aurum was born from a deep love for honest cooking — where the integrity of an ingredient speaks louder
+                than any technique. Our head chef, trained under Michelin-starred kitchens in Lyon and Paris, returned
+                home with a singular vision: to honour local harvests through a fine-dining lens.
+            </p>
+            <blockquote class="about-quote">
+                "We do not cook food. We compose moments — tableaux of texture, scent, and memory that linger long after
+                the last bite."
+                <br><br>— Chef Etienne Moreau, Founder
+            </blockquote>
+            <div class="about-stats">
+                <div class="about-stat">
+                    <div class="about-stat-num">48</div>
+                    <div class="about-stat-label">Seats</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">3</div>
+                    <div class="about-stat-label">Michelin Stars</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">92%</div>
+                    <div class="about-stat-label">Locally Sourced</div>
+                </div>
+            </div>
+            <div class="about-btn">
+                <a href="#reservation" class="btn-primary" style="display:inline-flex;">
+                    <i class="fa-regular fa-calendar"></i> Dine With Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====================================================
+    RESERVATION SECTION
+  ==================================================== -->
+    <section class="reservation-section" id="reservation">
+        <div class="reservation-inner">
+            <!-- Left info -->
+            <div class="reservation-left reveal">
+                <p class="section-tag">Reservations</p>
+                <h2 class="section-title">Secure Your<br>Table Tonight</h2>
+                <div class="divider">
+                    <span style="background:rgba(200,168,130,.4)"></span>
+                    <i class="fa-solid fa-leaf" style="color:rgba(200,168,130,.6)"></i>
+                    <span style="background:rgba(200,168,130,.4)"></span>
+                </div>
+                <p class="section-desc">
+                    We recommend booking at least 48 hours in advance. For special occasions and private dining, please
+                    contact us directly.
+                </p>
+
+                <ul class="res-info-list">
+                    <li class="res-info-item">
+                        <div class="res-info-icon"><i class="fa-regular fa-clock"></i></div>
+                        <div>
+                            <strong
+                                style="color:rgba(255,255,255,.82);display:block;font-family:var(--font-sans);font-size:.82rem;margin-bottom:.2rem;">Hours</strong>
+                            Tue – Sat: 6:00 PM – 11:00 PM <br>Sun: 12:00 PM – 9:00 PM
+                        </div>
+                    </li>
+                    <li class="res-info-item">
+                        <div class="res-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <strong
+                                style="color:rgba(255,255,255,.82);display:block;font-family:var(--font-sans);font-size:.82rem;margin-bottom:.2rem;">Location</strong>
+                            14 Rue de la Lumière, Old Quarter
+                        </div>
+                    </li>
+                    <li class="res-info-item">
+                        <div class="res-info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <strong
+                                style="color:rgba(255,255,255,.82);display:block;font-family:var(--font-sans);font-size:.82rem;margin-bottom:.2rem;">Call
+                                Us</strong>
+                            +1 (800) 955-AURUM
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right form -->
+            <div class="reservation-form-card reveal">
+                <h3>Make a Reservation</h3>
+                <p>Fill in the details and we'll confirm via email within 24 hours.</p>
+
+                <form id="reservationForm" novalidate>
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label" for="resFirstName">First Name</label>
+                            <input class="form-input" id="resFirstName" name="firstName" type="text"
+                                placeholder="Etienne" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resLastName">Last Name</label>
+                            <input class="form-input" id="resLastName" name="lastName" type="text" placeholder="Moreau"
+                                required />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resEmail">Email</label>
+                            <input class="form-input" id="resEmail" name="email" type="email"
+                                placeholder="etienne@example.com" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resPhone">Phone</label>
+                            <input class="form-input" id="resPhone" name="phone" type="tel"
+                                placeholder="+1 800 000 0000" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resDate">Date</label>
+                            <input class="form-input" id="resDate" name="date" type="date" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resTime">Time</label>
+                            <select class="form-select form-input" id="resTime" name="time" required>
+                                <option value="" disabled selected>Select time</option>
+                                <option>6:00 PM</option>
+                                <option>6:30 PM</option>
+                                <option>7:00 PM</option>
+                                <option>7:30 PM</option>
+                                <option>8:00 PM</option>
+                                <option>8:30 PM</option>
+                                <option>9:00 PM</option>
+                                <option>9:30 PM</option>
+                                <option>10:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resGuests">Guests</label>
+                            <select class="form-select form-input" id="resGuests" name="guests" required>
+                                <option value="" disabled selected>Number of guests</option>
+                                <option>1 Guest</option>
+                                <option>2 Guests</option>
+                                <option>3 Guests</option>
+                                <option>4 Guests</option>
+                                <option>5 Guests</option>
+                                <option>6 Guests</option>
+                                <option>7+ Guests (Call us)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="resOccasion">Occasion</label>
+                            <select class="form-select form-input" id="resOccasion" name="occasion">
+                                <option value="" selected>None</option>
+                                <option>Birthday</option>
+                                <option>Anniversary</option>
+                                <option>Business Dinner</option>
+                                <option>Proposal</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group form-full">
+                            <label class="form-label" for="resNotes">Special Requests</label>
+                            <textarea class="form-textarea" id="resNotes" name="notes"
+                                placeholder="Dietary requirements, seating preferences, allergies…"></textarea>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="form-submit" id="reserveSubmit">
+                        <i class="fa-regular fa-calendar-check"></i>
+                        Confirm Reservation
+                    </button>
+                </form>
+
+                <!-- Success message -->
+                <div class="reservation-success" id="reservationSuccess">
+                    <div class="success-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h4>Reservation Received!</h4>
+                    <p>Thank you. We'll send a confirmation to your email within 24 hours. We look forward to welcoming
+                        you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ====================================================
+    FOOTER
+  ==================================================== -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-logo">Aurum</div>
+                <p class="footer-tagline">A timeless dining destination where seasonal ingredients and artisanal craft
+                    converge to create unforgettable evenings.</p>
+                <div class="footer-socials">
+                    <a href="#" class="footer-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="footer-social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="footer-social" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="footer-social" aria-label="Pinterest"><i
+                            class="fa-brands fa-pinterest-p"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h5>Explore</h5>
+                <ul>
+                    <li><a href="#menu">Our Menu</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#reservation">Reservations</a></li>
+                    <li><a href="#">Private Dining</a></li>
+                    <li><a href="#">Gift Vouchers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Hours</h5>
+                <ul>
+                    <li><a href="#">Tue – Sat: 6PM – 11PM</a></li>
+                    <li><a href="#">Sunday: 12PM – 9PM</a></li>
+                    <li><a href="#">Monday: Closed</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h5>Contact</h5>
+                <ul>
+                    <li><a href="#">14 Rue de la Lumière</a></li>
+                    <li><a href="tel:+18009557878">+1 (800) 955-AURUM</a></li>
+                    <li><a href="mailto:reservations@aurum.com">reservations@aurum.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Aurum Restaurant. All rights reserved.</span>
+            <span>Privacy Policy · Terms of Service</span>
+        </div>
+    </footer>
+
+    <script src="re.js"></script>
+</body>
+
+</html>

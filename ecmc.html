@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenShop | Modern Eco Store</title>
+    <meta name="description"
+        content="Discover sustainable, eco-friendly products across fashion, electronics, accessories and more at GreenShop.">
+    <link rel="stylesheet" href="ecmc.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Cart Sidebar Overlay -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-bag"></i> Your Cart</h2>
+            <button class="cart-close-btn" id="cart-close-btn" aria-label="Close cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty" id="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+                <span>Add some items to get started!</span>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer" style="display:none;">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Shipping</span>
+                <span class="free-shipping">Free</span>
+            </div>
+            <div class="cart-total-row total">
+                <span>Total</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="btn-checkout">Checkout <i class="fas fa-arrow-right"></i></button>
+            <button class="btn-clear-cart" id="btn-clear-cart">Clear Cart</button>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">GreenShop<i class="fas fa-leaf"></i></a>
+
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#categories" class="nav-link">Shop</a></li>
+                <li><a href="#products" class="nav-link">Featured</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="icon-btn" aria-label="Search"><i class="fas fa-search"></i></button>
+                <button class="icon-btn cart-btn" id="cart-toggle-btn" aria-label="Open cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cart-badge" style="display:none;">0</span>
+                </button>
+                <button class="icon-btn" aria-label="Account"><i class="fas fa-user"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="grid-2">
+                <div class="hero-content">
+                    <span class="hero-label">New Collection</span>
+                    <h1 class="hero-title">Sustainable Style for <span
+                            style="color: var(--accent-color)">Everyone</span></h1>
+                    <p class="hero-text">Discover our new range of eco-friendly products designed to help you live a
+                        greener, more sustainable styling life.</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
+                        <a href="#categories" class="btn-secondary">Browse Categories</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80"
+                        alt="Fashion shopping" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop by Category Section -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shop by Category</h2>
+                <p style="color: var(--text-secondary)">Explore our curated collections</p>
+            </div>
+        </div>
+
+        <div class="category-slider-wrapper">
+            <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="category-track-container">
+                <div class="category-track" id="category-track">
+                    <!-- Category Cards -->
+                    <div class="category-card" data-category="accessories">
+                        <img src="https://images.unsplash.com/photo-1576053139778-7e32f2ae3d7a?w=500&q=80"
+                            alt="Accessories">
+                        <div class="category-overlay">
+                            <span class="category-icon"><i class="fas fa-gem"></i></span>
+                            <h3>Accessories</h3>
+                            <p>42 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="electronics">
+                        <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=500&q=80"
+                            alt="Electronics">
+                        <div class="category-overlay">
+                            <span class="category-icon"><i class="fas fa-microchip"></i></span>
+                            <h3>Electronics</h3>
+                            <p>86 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="fashion">
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&q=80"
+                            alt="Fashion">
+                        <div class="category-overlay">
+                            <span class="category-icon"><i class="fas fa-tshirt"></i></span>
+                            <h3>Fashion</h3>
+                            <p>130 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="footwear">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" alt="Footwear">
+                        <div class="category-overlay">
+                            <span class="category-icon"><i class="fas fa-shoe-prints"></i></span>
+                            <h3>Footwear</h3>
+                            <p>58 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="home">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80"
+                            alt="Home Decor">
+                        <div class="category-overlay">
+                            <span class="category-icon"><i class="fas fa-couch"></i></span>
+                            <h3>Home Decor</h3>
+                            <p>74 Products</p>
+                        </div>
+                    </div>
+                    <div class="category-card" data-category="beauty">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80" alt="Beauty">
+                        <div class="category-overlay">
+                            <span class="category-icon"><i class="fas fa-spa"></i></span>
+                            <h3>Beauty</h3>
+                            <p>35 Products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-arrow slider-next" id="slider-next" aria-label="Next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="slider-dots" id="slider-dots"></div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Products</h2>
+                <p style="color: var(--text-secondary)">Hand-picked favorites just for you</p>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-id="1" data-name="Organic Cotton Tee" data-price="29.99"
+                    data-category="Fashion">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80"
+                            alt="Organic Cotton Tee" loading="lazy">
+                        <div class="product-badge">Eco</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i
+                                    class="fas fa-heart"></i></button>
+                            <button class="action-btn quick-view-btn" title="Quick View"><i
+                                    class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Fashion</span>
+                        <h3 class="product-name">Organic Cotton Tee</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>(128)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$29.99</div>
+                            <button class="add-to-cart" aria-label="Add to cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-id="2" data-name="Wireless Earbuds Pro" data-price="89.99"
+                    data-category="Electronics">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&q=80"
+                            alt="Wireless Earbuds Pro" loading="lazy">
+                        <div class="product-badge new">New</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i
+                                    class="fas fa-heart"></i></button>
+                            <button class="action-btn quick-view-btn" title="Quick View"><i
+                                    class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-name">Wireless Earbuds Pro</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(256)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$89.99</div>
+                            <button class="add-to-cart" aria-label="Add to cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-id="3" data-name="Bamboo Sunglasses" data-price="45.00"
+                    data-category="Accessories">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400&q=80"
+                            alt="Bamboo Sunglasses" loading="lazy">
+                        <div class="product-badge">Eco</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i
+                                    class="fas fa-heart"></i></button>
+                            <button class="action-btn quick-view-btn" title="Quick View"><i
+                                    class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Accessories</span>
+                        <h3 class="product-name">Bamboo Sunglasses</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="far fa-star"></i>
+                            <span>(89)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$45.00</div>
+                            <button class="add-to-cart" aria-label="Add to cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-id="4" data-name="Wood Watch Classic" data-price="120.00"
+                    data-category="Accessories">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80"
+                            alt="Wood Watch Classic" loading="lazy">
+                        <div class="product-badge sale">Sale</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i
+                                    class="fas fa-heart"></i></button>
+                            <button class="action-btn quick-view-btn" title="Quick View"><i
+                                    class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Accessories</span>
+                        <h3 class="product-name">Wood Watch Classic</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>(204)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$120.00</div>
+                            <button class="add-to-cart" aria-label="Add to cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-id="5" data-name="Recycled Crossbody Bag" data-price="65.00"
+                    data-category="Fashion">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80"
+                            alt="Recycled Crossbody Bag" loading="lazy">
+                        <div class="product-badge">Eco</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i
+                                    class="fas fa-heart"></i></button>
+                            <button class="action-btn quick-view-btn" title="Quick View"><i
+                                    class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Fashion</span>
+                        <h3 class="product-name">Recycled Crossbody Bag</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(176)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$65.00</div>
+                            <button class="add-to-cart" aria-label="Add to cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-id="6" data-name="Smart LED Lamp" data-price="49.99"
+                    data-category="Electronics">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&q=80"
+                            alt="Smart LED Lamp" loading="lazy">
+                        <div class="product-badge new">New</div>
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn" title="Wishlist"><i
+                                    class="fas fa-heart"></i></button>
+                            <button class="action-btn quick-view-btn" title="Quick View"><i
+                                    class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-name">Smart LED Lamp</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="far fa-star"></i>
+                            <span>(62)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">$49.99</div>
+                            <button class="add-to-cart" aria-label="Add to cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-msg">Item added to cart!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 GreenShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="ecmc.js"></script>
+</body>
+
+</html>

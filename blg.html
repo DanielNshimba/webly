@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Purp | Modern News Portal</title>
+    <meta name="description"
+        content="A premium news portal featuring the latest articles on culture, technology, and more.">
+    <link rel="stylesheet" href="blg.css">
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">THE DAILY PURP</a>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#articles">Articles</a>
+                    <button id="adminLoginBtn" class="btn-outline">Admin Login</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to THE DAILY PURP</h1>
+                <p>Your source for curated stories, deep dives, and daily updates. Explore our latest articles and join
+                    the conversation.</p>
+                <a href="#articles" class="btn-primary">Start Reading</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Articles Section -->
+    <section id="articles">
+        <div class="container">
+            <h2 class="section-title">Latest Articles</h2>
+            <div id="articlesGrid" class="articles-grid">
+                <!-- Articles will be injected here by JS -->
+                <div class="loader">Loading articles...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Detail Modal / Section -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody">
+                <!-- Full article content injected here -->
+            </div>
+
+            <!-- Interactions Section -->
+            <div class="article-interactions">
+                <button id="likeBtn" class="interaction-btn">
+                    <span class="icon">🤍</span> <span id="likeCount">0</span>
+                </button>
+                <div class="view-count">
+                    <span>👁️</span> <span id="viewCount">0</span> views
+                </div>
+            </div>
+
+            <!-- Comments Section -->
+            <div class="comments-section">
+                <h3>Comments</h3>
+                <div id="commentsList"></div>
+                <form id="commentForm">
+                    <input type="text" id="commentAuthor" placeholder="Your Name" required>
+                    <textarea id="commentText" placeholder="Leave a comment..." required></textarea>
+                    <button type="submit" class="btn-primary">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Section (Hidden by default) -->
+    <div id="adminPanel" class="admin-panel hidden">
+        <div class="container">
+            <div class="admin-header">
+                <h2>Admin Dashboard</h2>
+                <button id="logoutBtn" class="btn-outline">Logout</button>
+            </div>
+
+            <form id="articleForm">
+                <input type="hidden" id="editArticleId">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="articleTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Author</label>
+                    <input type="text" id="articleAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea id="articleContent" rows="10" required></textarea>
+                </div>
+                <button type="submit" id="saveBtn" class="btn-primary">Publish Article</button>
+                <button type="button" id="cancelEdit" class="btn-outline hidden">Cancel Edit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content login-box">
+            <span class="close-modal" id="closeLogin">&times;</span>
+            <h3>Admin Login</h3>
+            <p>Access the dashboard to manage content.</p>
+            <form id="loginForm">
+                <input type="password" id="adminPassword" placeholder="Enter Admin Password" required>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Daily Purp. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="blg.js"></script>
+</body>
+
+</html>
