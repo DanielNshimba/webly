@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Smart Task & Budget Manager</title>
+  <meta name="description" content="Manage your tasks and track finances in one place with TaskFlow, the premium task and budget manager." />
+  <link rel="stylesheet" href="ts.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon"><i class="fa-solid fa-layer-group"></i></div>
+        <span class="brand-name">TaskFlow</span>
+      </div>
+      <nav class="nav-actions" style="display:none">
+        <button id="darkToggle" class="btn-icon" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon" id="darkIcon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO STATS -->
+  <section class="stats-bar">
+    <div class="stat-card" id="statTotal">
+      <div class="stat-icon blue"><i class="fa-solid fa-list-check"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Total Tasks</span>
+        <span class="stat-value" id="totalTasks">0</span>
+      </div>
+    </div>
+    <div class="stat-card" id="statDone">
+      <div class="stat-icon green"><i class="fa-solid fa-circle-check"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Completed</span>
+        <span class="stat-value" id="completedTasks">0</span>
+      </div>
+    </div>
+    <div class="stat-card" id="statBudget">
+      <div class="stat-icon yellow"><i class="fa-solid fa-coins"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Total Budget</span>
+        <span class="stat-value" id="totalBudget">$0.00</span>
+      </div>
+    </div>
+    <div class="stat-card" id="statSpent">
+      <div class="stat-icon red"><i class="fa-solid fa-arrow-trend-down"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Spent (Done)</span>
+        <span class="stat-value" id="spentBudget">$0.00</span>
+      </div>
+    </div>
+    <div class="stat-card" id="statBalance">
+      <div class="stat-icon purple"><i class="fa-solid fa-wallet"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Remaining</span>
+        <span class="stat-value" id="remainBudget">$0.00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="main-container">
+
+    <!-- LEFT: ADD TASK PANEL -->
+    <aside class="panel add-panel">
+      <h2 class="panel-title"><i class="fa-solid fa-plus-circle"></i> Add New Task</h2>
+
+      <div class="form-group">
+        <label for="taskName">Task Name</label>
+        <input type="text" id="taskName" placeholder="e.g. Buy office supplies" />
+      </div>
+
+      <div class="form-group">
+        <label for="taskCategory">Category</label>
+        <select id="taskCategory">
+          <option value="Work">💼 Work</option>
+          <option value="Personal">🏠 Personal</option>
+          <option value="Shopping">🛍️ Shopping</option>
+          <option value="Finance">💰 Finance</option>
+          <option value="Health">❤️ Health</option>
+          <option value="Other">📌 Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="taskPriority">Priority</label>
+        <select id="taskPriority">
+          <option value="Low">🟢 Low</option>
+          <option value="Medium" selected>🟡 Medium</option>
+          <option value="High">🔴 High</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="taskDue">Due Date</label>
+        <input type="date" id="taskDue" />
+      </div>
+
+      <div class="form-group">
+        <label for="taskBudget">Budget Amount ($)</label>
+        <div class="input-prefix">
+          <span>$</span>
+          <input type="number" id="taskBudget" placeholder="0.00" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="taskNotes">Notes</label>
+        <textarea id="taskNotes" placeholder="Optional details..." rows="3"></textarea>
+      </div>
+
+      <button id="addTaskBtn" class="btn-primary"><i class="fa-solid fa-plus"></i> Add Task</button>
+
+      <!-- CALCULATOR -->
+      <div class="calculator-block">
+        <h3 class="calc-title"><i class="fa-solid fa-calculator"></i> Quick Calculator</h3>
+        <div class="calc-display">
+          <input type="text" id="calcDisplay" readonly placeholder="0" />
+        </div>
+        <div class="calc-grid">
+          <button class="calc-btn func" data-val="C">C</button>
+          <button class="calc-btn func" data-val="⌫">⌫</button>
+          <button class="calc-btn op" data-val="%">%</button>
+          <button class="calc-btn op" data-val="/">÷</button>
+
+          <button class="calc-btn num" data-val="7">7</button>
+          <button class="calc-btn num" data-val="8">8</button>
+          <button class="calc-btn num" data-val="9">9</button>
+          <button class="calc-btn op" data-val="*">×</button>
+
+          <button class="calc-btn num" data-val="4">4</button>
+          <button class="calc-btn num" data-val="5">5</button>
+          <button class="calc-btn num" data-val="6">6</button>
+          <button class="calc-btn op" data-val="-">−</button>
+
+          <button class="calc-btn num" data-val="1">1</button>
+          <button class="calc-btn num" data-val="2">2</button>
+          <button class="calc-btn num" data-val="3">3</button>
+          <button class="calc-btn op" data-val="+">+</button>
+
+          <button class="calc-btn num span2" data-val="0">0</button>
+          <button class="calc-btn num" data-val=".">.</button>
+          <button class="calc-btn eq" data-val="=">=</button>
+        </div>
+        <button class="btn-secondary use-calc" id="useCalcBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i> Use as Budget</button>
+      </div>
+    </aside>
+
+    <!-- RIGHT: TASKS LIST PANEL -->
+    <section class="panel tasks-panel">
+      <!-- Filter & Search -->
+      <div class="tasks-toolbar">
+        <div class="search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search tasks..." />
+        </div>
+        <div class="filter-wrap">
+          <select id="filterStatus">
+            <option value="all">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="done">Completed</option>
+          </select>
+          <select id="filterCategory">
+            <option value="all">All Categories</option>
+            <option value="Work">Work</option>
+            <option value="Personal">Personal</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Finance">Finance</option>
+            <option value="Health">Health</option>
+            <option value="Other">Other</option>
+          </select>
+          <select id="sortTasks">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="priority">Priority</option>
+            <option value="budget">Budget ↑</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="progress-wrap">
+        <div class="progress-labels">
+          <span>Progress</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Task List -->
+      <div id="taskList" class="task-list">
+        <div class="empty-state" id="emptyState">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <p>No tasks yet. Add your first task!</p>
+        </div>
+      </div>
+
+      <!-- Budget Summary -->
+      <div class="budget-summary-panel">
+        <h3><i class="fa-solid fa-chart-pie"></i> Budget Breakdown</h3>
+        <div class="budget-bars" id="budgetBreakdown">
+          <p class="budget-hint">Add tasks with budgets to see breakdown.</p>
+        </div>
+        <div class="budget-actions">
+          <button class="btn-secondary" id="exportBtn"><i class="fa-solid fa-file-export"></i> Export CSV</button>
+          <button class="btn-danger" id="clearAllBtn"><i class="fa-solid fa-trash"></i> Clear All</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-pen-to-square"></i> Edit Task</h3>
+        <button class="btn-icon" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editId" />
+        <div class="form-group">
+          <label for="editName">Task Name</label>
+          <input type="text" id="editName" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editCategory">Category</label>
+            <select id="editCategory">
+              <option value="Work">💼 Work</option>
+              <option value="Personal">🏠 Personal</option>
+              <option value="Shopping">🛍️ Shopping</option>
+              <option value="Finance">💰 Finance</option>
+              <option value="Health">❤️ Health</option>
+              <option value="Other">📌 Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="editPriority">Priority</label>
+            <select id="editPriority">
+              <option value="Low">🟢 Low</option>
+              <option value="Medium">🟡 Medium</option>
+              <option value="High">🔴 High</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editDue">Due Date</label>
+            <input type="date" id="editDue" />
+          </div>
+          <div class="form-group">
+            <label for="editBudget">Budget ($)</label>
+            <input type="number" id="editBudget" min="0" step="0.01" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="editNotes">Notes</label>
+          <textarea id="editNotes" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="cancelModal">Cancel</button>
+        <button class="btn-primary" id="saveEditBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script src="ts.js"></script>
+</body>
+</html>
